@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../service/GlobalApi";
 import { LoaderCircle } from "lucide-react";
@@ -14,6 +14,10 @@ function PersonalDetail({ enableNext }) {
 
   const [formData, setFormData] = useState();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setFormData({ ...formData });
+  }, []);
 
   const handleInputChange = (e) => {
     enableNext(false);
